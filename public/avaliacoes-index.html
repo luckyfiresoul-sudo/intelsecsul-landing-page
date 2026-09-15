@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Avaliações de Clientes | Intelsecsul - Locação de Câmeras de Segurança</title>
+  
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Swiper.js CSS via CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <!-- Google Fonts: Inter / Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              blue: '#0091FF',
+              cyan: '#00D0FF',
+              dark: '#0A0D14',
+              card: '#161F30',
+              border: '#1E293B',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    /* Estilização customizada da paginação do Swiper */
+    .swiper-pagination-bullet {
+      background: #475569;
+      opacity: 0.6;
+      width: 10px;
+      height: 10px;
+      transition: all 0.3s ease;
+    }
+    .swiper-pagination-bullet-active {
+      background: #FBBF24 !important;
+      opacity: 1;
+      width: 32px;
+      border-radius: 9999px;
+    }
+    /* Setas customizadas para não usar o visual padrão azul do Swiper */
+    .swiper-button-next::after,
+    .swiper-button-prev::after {
+      display: none;
+    }
+  </style>
+</head>
+<body class="bg-[#0A0D14] text-slate-100 antialiased min-h-screen flex flex-col justify-center py-12 sm:py-20">
+
+  <!-- ========================================================================= -->
+  <!-- SEÇÃO DE AVALIAÇÕES DE CLIENTES (PROVA SOCIAL - CRO FOCADO)                -->
+  <!-- ========================================================================= -->
+  <section class="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Cabeçalho da Seção -->
+    <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-14">
+      <!-- Badge de Confiança -->
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-400/10 border border-amber-400/30 text-amber-300 text-xs font-bold uppercase tracking-wider mb-4 shadow-sm">
+        <div class="flex items-center gap-1">
+          <!-- Estrela Dourada SVG -->
+          <svg class="w-4 h-4 fill-amber-400 text-amber-400" viewBox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+          <svg class="w-4 h-4 fill-amber-400 text-amber-400" viewBox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+          <svg class="w-4 h-4 fill-amber-400 text-amber-400" viewBox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+          <svg class="w-4 h-4 fill-amber-400 text-amber-400" viewBox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+          <svg class="w-4 h-4 fill-amber-400 text-amber-400" viewBox="0 0 24 24">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+        </div>
+        <span>5.0 • 100% de Clientes Satisfeitos</span>
+      </div>
+
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+        Quem Conhece, <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#0091FF] to-[#00D0FF]">Confia e Recomenda</span>
+      </h2>
+      <p class="mt-3.5 text-base sm:text-lg text-slate-300">
+        Veja instalações reais executadas pela Intelsecsul e o depoimento de quem protegeu seu patrimônio sem custos de aquisição.
+      </p>
+    </div>
+
+    <!-- Carrossel Swiper Container com Controles Laterais Flutuantes -->
+    <div class="relative max-w-5xl mx-auto">
+
+      <!-- Botão Anterior (Desktop) -->
+      <button 
+        type="button"
+        aria-label="Avaliação anterior"
+        class="custom-swiper-prev hidden md:flex absolute -left-5 lg:-left-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-[#161F30] border border-[#1E293B] items-center justify-center text-white hover:bg-[#0091FF] hover:border-[#0091FF] shadow-2xl transition-all duration-200 hover:scale-110 cursor-pointer"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
+        </svg>
+      </button>
+
+      <!-- Botão Próximo (Desktop) -->
+      <button 
+        type="button"
+        aria-label="Próxima avaliação"
+        class="custom-swiper-next hidden md:flex absolute -right-5 lg:-right-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-[#161F30] border border-[#1E293B] items-center justify-center text-white hover:bg-[#0091FF] hover:border-[#0091FF] shadow-2xl transition-all duration-200 hover:scale-110 cursor-pointer"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </button>
+
+      <!-- Swiper Main Wrapper -->
+      <div class="swiper myReviewsSwiper rounded-2xl sm:rounded-3xl shadow-2xl shadow-black/60">
+        <div class="swiper-wrapper">
+
+          <!-- ========================================================================= -->
+          <!-- SLIDE 1: Marcelo D.                                                       -->
+          <!-- ========================================================================= -->
+          <div class="swiper-slide">
+            <div class="bg-[#161F30] border border-[#1E293B] rounded-2xl sm:rounded-3xl overflow-hidden grid grid-cols-1 md:grid-cols-2">
+              
+              <!-- 50% Lado Esquerdo: Imagem Real da Instalação -->
+              <div class="relative aspect-4/3 md:aspect-auto md:h-full min-h-[260px] md:min-h-[400px] bg-[#121824] overflow-hidden">
+                <img 
+                  src="https://images.unsplash.com/photo-1557597774-9d273605dfa9?auto=format&fit=crop&w=1000&q=80" 
+                  alt="Câmera Intelbras fixada com tubulação aparente e acabamento perfeito"
+                  class="w-full h-full object-cover object-center"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-[#161F30] via-transparent to-black/30 md:bg-gradient-to-r md:from-transparent md:to-[#161F30]/70"></div>
+                
+                <!-- Badge de Autenticidade -->
+                <div class="absolute top-4 left-4 z-10">
+                  <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#0A0D14]/85 backdrop-blur-md border border-white/15 text-white shadow-md">
+                    <svg class="w-3.5 h-3.5 text-[#0091FF]" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    </svg>
+                    Instalação Verificada • Distribuidora
+                  </span>
+                </div>
+
+                <div class="absolute bottom-3 left-4 right-4 z-10">
+                  <p class="text-[11px] font-medium text-slate-300 bg-black/60 backdrop-blur-xs px-2.5 py-1 rounded-md line-clamp-1 border border-white/10">
+                    Câmera Intelbras fixada com tubulação aparente e acabamento perfeito
+                  </p>
+                </div>
+              </div>
+
+              <!-- 50% Lado Direito: Avaliação, Estrelas e Cliente -->
+              <div class="p-6 sm:p-8 md:p-10 flex flex-col justify-between relative bg-[#161F30]">
+                <!-- Aspas de Destaque no Fundo -->
+                <div class="absolute top-6 right-6 text-[#1E293B] pointer-events-none">
+                  <svg class="w-12 h-12 fill-current opacity-60" viewBox="0 0 24 24">
+                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                  </svg>
+                </div>
+
+                <div>
+                  <!-- 5 Estrelas Douradas SVG -->
+                  <div class="flex items-center gap-1.5 mb-5">
+                    <div class="flex items-center gap-1">
+                      <svg class="w-5 h-5 fill-amber-400 text-amber-400" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                      <svg class="w-5 h-5 fill-amber-400 text-amber-400" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                      <svg class="w-5 h-5 fill-amber-400 text-amber-400" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                      <svg class="w-5 h-5 fill-amber-400 text-amber-400" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                      <svg class="w-5 h-5 fill-amber-400 text-amber-400" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <span class="text-xs font-extrabold text-amber-400 bg-amber-400/10 px-2 py-0.5 rounded-md border border-amber-400/20">5.0</span>
+                  </div>
+
+                  <!-- Depoimento -->
+                  <blockquote class="text-base sm:text-lg md:text-xl text-slate-100 font-medium leading-relaxed mb-6 relative z-10">
+                    "Instalamos o sistema de 8 câmeras na nossa distribuidora. O fato de não ter taxa de instalação e a mensalidade ser fixa ajudou muito no nosso planejamento. As imagens são excelentes."
+                  </blockquote>
+                </div>
+
+                <!-- Assinatura do Cliente -->
+                <div class="pt-5 border-t border-[#1E293B] flex items-center justify-between">
+                  <div>
+                    <h4 class="text-lg font-bold text-white">Marcelo D.</h4>
+                    <p class="text-xs sm:text-sm text-[#0091FF] font-semibold">Distribuidora Comercial</p>
+                  </div>
+                  <span class="text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-3 py-1 rounded-full flex items-center gap-1">
+                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                    </svg>
+                    Cliente Verificado
+                  </span>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- ========================================================================= -->
+          <!-- SLIDE 2: Luciana K.                                                       -->
+          <!-- ========================================================================= -->
+          <div class="swiper-slide">
+            <div class="bg-[#161F30] border border-[#1E293B] rounded-2xl sm:rounded-3xl overflow-hidden grid grid-cols-1 md:grid-cols-2">
+              
+              <!-- 50% Lado Esquerdo -->
+              <div class="relative aspect-4/3 md:aspect-auto md:h-full min-h-[260px] md:min-h-[400px] bg-[#121824] overflow-hidden">
+                <img 
+                  src="https://images.unsplash.com/photo-1528312635006-8ea0bc49ec63?auto=format&fit=crop&w=1000&q=80" 
+                  alt="Câmera dome branca instalada em teto de residência"
+                  class="w-full h-full object-cover object-center"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-[#161F30] via-transparent to-black/30 md:bg-gradient-to-r md:from-transparent md:to-[#161F30]/70"></div>
+                
+                <div class="absolute top-4 left-4 z-10">
+                  <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#0A0D14]/85 backdrop-blur-md border border-white/15 text-white shadow-md">
+                    <svg class="w-3.5 h-3.5 text-[#0091FF]" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    </svg>
+                    Instalação Verificada • Residencial
+                  </span>
+                </div>
+
+                <div class="absolute bottom-3 left-4 right-4 z-10">
+                  <p class="text-[11px] font-medium text-slate-300 bg-black/60 backdrop-blur-xs px-2.5 py-1 rounded-md line-clamp-1 border border-white/10">
+                    Câmera dome branca instalada em teto de residência
+                  </p>
+                </div>
+              </div>
+
+              <!-- 50% Lado Direito -->
+              <div class="p-6 sm:p-8 md:p-10 flex flex-col justify-between relative bg-[#161F30]">
+                <div class="absolute top-6 right-6 text-[#1E293B] pointer-events-none">
+                  <svg class="w-12 h-12 fill-current opacity-60" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+                </div>
+
+                <div>
+                  <div class="flex items-center gap-1.5 mb-5">
+                    <div class="flex items-center gap-1">
+                      <svg class="w-5 h-5 fill-amber-400 text-amber-400" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                      <svg class="w-5 h-5 fill-amber-400 text-amber-400" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                      <svg class="w-5 h-5 fill-amber-400 text-amber-400" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                      <svg class="w-5 h-5 fill-amber-400 text-amber-400" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                      <svg class="w-5 h-5 fill-amber-400 text-amber-400" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <span class="text-xs font-extrabold text-amber-400 bg-amber-400/10 px-2 py-0.5 rounded-md border border-amber-400/20">5.0</span>
+                  </div>
+
+                  <blockquote class="text-base sm:text-lg md:text-xl text-slate-100 font-medium leading-relaxed mb-6 relative z-10">
+                    "Achei sensacional a ideia de alugar em vez de comprar. Não precisei gastar uma nota com equipamentos de uma vez só e a instalação na minha casa ficou impecável, sem fios soltos."
+                  </blockquote>
+                </div>
+
+                <div class="pt-5 border-t border-[#1E293B] flex items-center justify-between">
+                  <div>
+                    <h4 class="text-lg font-bold text-white">Luciana K.</h4>
+                    <p class="text-xs sm:text-sm text-[#0091FF] font-semibold">Cliente Residencial</p>
+                  </div>
+                  <span class="text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-3 py-1 rounded-full flex items-center gap-1">
+                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                    Cliente Verificado
+                  </span>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- ========================================================================= -->
+          <!-- SLIDE 3: Paulo R.                                                         -->
+          <!-- ========================================================================= -->
+          <div class="swiper-slide">
+            <div class="bg-[#161F30] border border-[#1E293B] rounded-2xl sm:rounded-3xl overflow-hidden grid grid-cols-1 md:grid-cols-2">
+              
+              <!-- 50% Lado Esquerdo -->
+              <div class="relative aspect-4/3 md:aspect-auto md:h-full min-h-[260px] md:min-h-[400px] bg-[#121824] overflow-hidden">
+                <img 
+                  src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1000&q=80" 
+                  alt="Câmera bullet Intelbras em muro de condomínio"
+                  class="w-full h-full object-cover object-center"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-[#161F30] via-transparent to-black/30 md:bg-gradient-to-r md:from-transparent md:to-[#161F30]/70"></div>
+                
+                <div class="absolute top-4 left-4 z-10">
+                  <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#0A0D14]/85 backdrop-blur-md border border-white/15 text-white shadow-md">
+                    <svg class="w-3.5 h-3.5 text-[#0091FF]" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    </svg>
+                    Instalação Verificada • Condomínio
+                  </span>
+                </div>
+
+                <div class="absolute bottom-3 left-4 right-4 z-10">
+                  <p class="text-[11px] font-medium text-slate-300 bg-black/60 backdrop-blur-xs px-2.5 py-1 rounded-md line-clamp-1 border border-white/10">
+                    Câmera bullet Intelbras em muro de condomínio
+                  </p>
+                </div>
+              </div>
+
+              <!-- 50% Lado Direito -->
+              <div class="p-6 sm:p-8 md:p-10 flex flex-col justify-between relative bg-[#161F30]">
+                <div class="absolute top-6 right-6 text-[#1E293B] pointer-events-none">
+                  <svg class="w-12 h-12 fill-current opacity-60" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+                </div>
+
+                <div>
+                  <div class="flex items-center gap-1.5 mb-5">
+                    <div class="flex items-center gap-1">
+                      <svg class="w-5 h-5 fill-amber-400 text-amber-400" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                      <svg class="w-5 h-5 fill-amber-400 text-amber-400" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                      <svg class="w-5 h-5 fill-amber-400 text-amber-400" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                      <svg class="w-5 h-5 fill-amber-400 text-amber-400" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                      <svg class="w-5 h-5 fill-amber-400 text-amber-400" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <span class="text-xs font-extrabold text-amber-400 bg-amber-400/10 px-2 py-0.5 rounded-md border border-amber-400/20">5.0</span>
+                  </div>
+
+                  <blockquote class="text-base sm:text-lg md:text-xl text-slate-100 font-medium leading-relaxed mb-6 relative z-10">
+                    "Somos clientes no nosso condomínio. Uma das câmeras externas queimou depois de um temporal, e no dia seguinte a equipe já estava aqui para trocar por uma nova sem cobrar nada a mais. Muito confiável."
+                  </blockquote>
+                </div>
+
+                <div class="pt-5 border-t border-[#1E293B] flex items-center justify-between">
+                  <div>
+                    <h4 class="text-lg font-bold text-white">Paulo R.</h4>
+                    <p class="text-xs sm:text-sm text-[#0091FF] font-semibold">Síndico de Condomínio</p>
+                  </div>
+                  <span class="text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-3 py-1 rounded-full flex items-center gap-1">
+                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                    Cliente Verificado
+                  </span>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- ========================================================================= -->
+          <!-- SLIDE 4: Amanda C.                                                        -->
+          <!-- ========================================================================= -->
+          <div class="swiper-slide">
+            <div class="bg-[#161F30] border border-[#1E293B] rounded-2xl sm:rounded-3xl overflow-hidden grid grid-cols-1 md:grid-cols-2">
+              
+              <!-- 50% Lado Esquerdo -->
+              <div class="relative aspect-4/3 md:aspect-auto md:h-full min-h-[260px] md:min-h-[400px] bg-[#121824] overflow-hidden">
+                <img 
+                  src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1000&q=80" 
+                  alt="Imagem da tela do celular mostrando o aplicativo com as câmeras"
+                  class="w-full h-full object-cover object-center"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-[#161F30] via-transparent to-black/30 md:bg-gradient-to-r md:from-transparent md:to-[#161F30]/70"></div>
+                
+                <div class="absolute top-4 left-4 z-10">
+                  <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#0A0D14]/85 backdrop-blur-md border border-white/15 text-white shadow-md">
+                    <svg class="w-3.5 h-3.5 text-[#0091FF]" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    </svg>
+                    Acesso Mobile Verificado
+                  </span>
+                </div>
+
+                <div class="absolute bottom-3 left-4 right-4 z-10">
+                  <p class="text-[11px] font-medium text-slate-300 bg-black/60 backdrop-blur-xs px-2.5 py-1 rounded-md line-clamp-1 border border-white/10">
+                    Imagem da tela do celular mostrando o aplicativo com as câmeras
+                  </p>
+                </div>
+              </div>
+
+              <!-- 50% Lado Direito -->
+              <div class="p-6 sm:p-8 md:p-10 flex flex-col justify-between relative bg-[#161F30]">
+                <div class="absolute top-6 right-6 text-[#1E293B] pointer-events-none">
+                  <svg class="w-12 h-12 fill-current opacity-60" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+                </div>
+
+                <div>
+                  <div class="flex items-center gap-1.5 mb-5">
+                    <div class="flex items-center gap-1">
+                      <svg class="w-5 h-5 fill-amber-400 text-amber-400" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                      <svg class="w-5 h-5 fill-amber-400 text-amber-400" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                      <svg class="w-5 h-5 fill-amber-400 text-amber-400" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                      <svg class="w-5 h-5 fill-amber-400 text-amber-400" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                      <svg class="w-5 h-5 fill-amber-400 text-amber-400" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <span class="text-xs font-extrabold text-amber-400 bg-amber-400/10 px-2 py-0.5 rounded-md border border-amber-400/20">5.0</span>
+                  </div>
+
+                  <blockquote class="text-base sm:text-lg md:text-xl text-slate-100 font-medium leading-relaxed mb-6 relative z-10">
+                    "Atendimento muito rápido desde o primeiro contato! Fizeram a visita sem custo e já instalaram. O aplicativo no celular é super fácil de mexer e a visão noturna das câmeras é bem nítida."
+                  </blockquote>
+                </div>
+
+                <div class="pt-5 border-t border-[#1E293B] flex items-center justify-between">
+                  <div>
+                    <h4 class="text-lg font-bold text-white">Amanda C.</h4>
+                    <p class="text-xs sm:text-sm text-[#0091FF] font-semibold">Cliente Residencial</p>
+                  </div>
+                  <span class="text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-3 py-1 rounded-full flex items-center gap-1">
+                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                    Cliente Verificado
+                  </span>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- ========================================================================= -->
+          <!-- SLIDE 5: Diego V.                                                         -->
+          <!-- ========================================================================= -->
+          <div class="swiper-slide">
+            <div class="bg-[#161F30] border border-[#1E293B] rounded-2xl sm:rounded-3xl overflow-hidden grid grid-cols-1 md:grid-cols-2">
+              
+              <!-- 50% Lado Esquerdo -->
+              <div class="relative aspect-4/3 md:aspect-auto md:h-full min-h-[260px] md:min-h-[400px] bg-[#121824] overflow-hidden">
+                <img 
+                  src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1000&q=80" 
+                  alt="Rack metálico organizado com switch e fios estruturados"
+                  class="w-full h-full object-cover object-center"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-[#161F30] via-transparent to-black/30 md:bg-gradient-to-r md:from-transparent md:to-[#161F30]/70"></div>
+                
+                <div class="absolute top-4 left-4 z-10">
+                  <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#0A0D14]/85 backdrop-blur-md border border-white/15 text-white shadow-md">
+                    <svg class="w-3.5 h-3.5 text-[#0091FF]" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                    </svg>
+                    Infraestrutura Profissional
+                  </span>
+                </div>
+
+                <div class="absolute bottom-3 left-4 right-4 z-10">
+                  <p class="text-[11px] font-medium text-slate-300 bg-black/60 backdrop-blur-xs px-2.5 py-1 rounded-md line-clamp-1 border border-white/10">
+                    Rack metálico organizado com switch e fios estruturados
+                  </p>
+                </div>
+              </div>
+
+              <!-- 50% Lado Direito -->
+              <div class="p-6 sm:p-8 md:p-10 flex flex-col justify-between relative bg-[#161F30]">
+                <div class="absolute top-6 right-6 text-[#1E293B] pointer-events-none">
+                  <svg class="w-12 h-12 fill-current opacity-60" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+                </div>
+
+                <div>
+                  <div class="flex items-center gap-1.5 mb-5">
+                    <div class="flex items-center gap-1">
+                      <svg class="w-5 h-5 fill-amber-400 text-amber-400" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                      <svg class="w-5 h-5 fill-amber-400 text-amber-400" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                      <svg class="w-5 h-5 fill-amber-400 text-amber-400" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                      <svg class="w-5 h-5 fill-amber-400 text-amber-400" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                      <svg class="w-5 h-5 fill-amber-400 text-amber-400" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <span class="text-xs font-extrabold text-amber-400 bg-amber-400/10 px-2 py-0.5 rounded-md border border-amber-400/20">5.0</span>
+                  </div>
+
+                  <blockquote class="text-base sm:text-lg md:text-xl text-slate-100 font-medium leading-relaxed mb-6 relative z-10">
+                    "Troquei de empresa porque a antiga nunca vinha dar manutenção. Com a Intelsecsul, o suporte resolve tudo rápido. A estrutura física com os tubos de proteção e o rack metálico ficou super profissional."
+                  </blockquote>
+                </div>
+
+                <div class="pt-5 border-t border-[#1E293B] flex items-center justify-between">
+                  <div>
+                    <h4 class="text-lg font-bold text-white">Diego V.</h4>
+                    <p class="text-xs sm:text-sm text-[#0091FF] font-semibold">Comércio / Escritório</p>
+                  </div>
+                  <span class="text-xs font-semibold text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-3 py-1 rounded-full flex items-center gap-1">
+                    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                    Cliente Verificado
+                  </span>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Paginação por Bolinhas (Dots) Customizadas -->
+      <div class="swiper-pagination mt-8 flex justify-center items-center gap-2"></div>
+
+    </div>
+
+    <!-- Chamada de Ação Final (CRO) -->
+    <div class="mt-12 text-center">
+      <a 
+        href="https://wa.me/5541999999999?text=Ol%C3%A1!%20Vi%20as%20avalia%C3%A7%C3%B5es%20da%20Intelsecsul%20e%20gostaria%20de%20solicitar%20uma%20avalia%C3%A7%C3%A3o%20t%C3%A9cnica%20gratuita."
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-3 bg-[#25D366] hover:bg-[#1EBE5D] text-white font-bold text-base px-8 py-4 rounded-xl shadow-xl shadow-[#25D366]/20 transition-all duration-200 hover:scale-105"
+      >
+        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+          <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+        </svg>
+        <span>Solicitar Avaliação Técnica Sem Custo</span>
+      </a>
+      <p class="mt-2 text-xs text-slate-400">Atendimento em Curitiba e Região Metropolitana • Resposta rápida</p>
+    </div>
+
+  </section>
+
+  <!-- Swiper.js JavaScript via CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- Inicialização do Swiper com Auto-play suave e navegação por toque -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const swiper = new Swiper('.myReviewsSwiper', {
+        loop: true,
+        speed: 600,
+        spaceBetween: 24,
+        grabCursor: true,
+        autoplay: {
+          delay: 6000,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true,
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.custom-swiper-next',
+          prevEl: '.custom-swiper-prev',
+        },
+        keyboard: {
+          enabled: true,
+        },
+      });
+    });
+  </script>
+</body>
+</html>

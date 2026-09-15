@@ -1,0 +1,6 @@
+{
+  "name": "Intelsecsul — Locação de Câmeras de Segurança",
+  "description": "Locação de câmeras de segurança em Curitiba a partir de R$149/mês. Equipamentos de ponta, sem custo de instalação e suporte total. Peça seu orçamento!",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

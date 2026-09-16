@@ -1,5 +1,5 @@
 import React from 'react';
-import { Phone, Clock, MapPin, CheckCircle2 } from 'lucide-react';
+import { Clock, MapPin } from 'lucide-react';
 import { COMPANY_INFO, DEFAULT_WHATSAPP_MESSAGE } from '../data/constants';
 import { useTracking } from '../context/TrackingContext';
 import { Logo } from './Logo';
@@ -20,31 +20,17 @@ export const Footer: React.FC = () => {
               <Logo variant="footer" />
             </div>
             
-            <p className="text-xs sm:text-sm text-[#CBD5E1] leading-relaxed mb-4">
+            <p className="text-xs sm:text-sm text-[#CBD5E1] leading-relaxed">
               Especialistas em locação e monitoramento de câmeras de segurança para residências, empresas e condomínios em Curitiba e Região Metropolitana.
             </p>
-
-            <div className="flex items-center gap-2 text-xs font-semibold text-[#00C5FF] bg-[#161F30] py-1.5 px-3 rounded-lg border border-[#1E293B]">
-              <CheckCircle2 className="w-3.5 h-3.5 text-[#0091FF]" />
-              <span>Equipe Técnica 100% Própria</span>
-            </div>
           </div>
 
           {/* Coluna 2: Contato & Atendimento */}
           <div>
             <h4 className="text-sm font-bold uppercase tracking-wider text-white mb-4">
-              Contato & WhatsApp
+              Contato
             </h4>
             <ul className="space-y-3 text-xs sm:text-sm">
-              <li>
-                <a
-                  href={COMPANY_INFO.phoneTel}
-                  className="flex items-center gap-2.5 text-[#CBD5E1] hover:text-white transition-colors"
-                >
-                  <Phone className="w-4 h-4 text-[#0091FF] shrink-0" />
-                  <span>{COMPANY_INFO.phoneDisplay}</span>
-                </a>
-              </li>
               <li>
                 <a
                   id="footer-whatsapp-link"
@@ -52,7 +38,7 @@ export const Footer: React.FC = () => {
                   onClick={() => trackWhatsAppClick('geral')}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold text-xs transition-all shadow-md shadow-[#25D366]/25 hover:shadow-lg hover:shadow-[#25D366]/35 cursor-pointer"
+                  className="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold text-xs transition-all shadow-md shadow-[#25D366]/25 hover:shadow-lg hover:shadow-[#25D366]/35 cursor-pointer"
                 >
                   <WhatsAppIcon className="w-4 h-4" />
                   <span>WhatsApp: {COMPANY_INFO.phoneDisplay}</span>

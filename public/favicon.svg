@@ -1,6 +1,135 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none">
-  <rect width="32" height="32" rx="8" fill="#0B1B3A"/>
-  <path d="M16 4L7 8V15C7 20.5 10.8 25.7 16 27C21.2 25.7 25 20.5 25 15V8L16 4Z" fill="#142B57" stroke="#5FD64B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  <circle cx="16" cy="15" r="3.5" fill="#5FD64B"/>
-  <path d="M16 13V15" stroke="#0B1B3A" stroke-width="1.5" stroke-linecap="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Gradiente do texto Intelsec -->
+    <linearGradient id="cyanBlueGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#00D2FF" />
+      <stop offset="100%" stop-color="#0080FF" />
+    </linearGradient>
+
+    <!-- Gradiente metálico do corpo da câmera -->
+    <linearGradient id="cameraBody" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="40%" stop-color="#E1ECF4" />
+      <stop offset="80%" stop-color="#ABC4DA" />
+      <stop offset="100%" stop-color="#7292AF" />
+    </linearGradient>
+
+    <!-- Gradiente da lente da câmera -->
+    <radialGradient id="lensGrad" cx="45%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#00F0FF" />
+      <stop offset="25%" stop-color="#0080FF" />
+      <stop offset="60%" stop-color="#092042" />
+      <stop offset="100%" stop-color="#030814" />
+    </radialGradient>
+
+    <!-- Gradiente de acabamento da base metálica -->
+    <linearGradient id="metalArm" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3D5369" />
+      <stop offset="50%" stop-color="#67849F" />
+      <stop offset="100%" stop-color="#243342" />
+    </linearGradient>
+  </defs>
+
+  <!-- Fundo escuro com cantos arredondados para compatibilidade com abas claras e escuras -->
+  <rect width="512" height="512" rx="64" fill="#05070B" />
+
+  <!-- Triângulo exterior branco com traço de alto contraste -->
+  <polygon points="256,44 48,432 464,432" fill="#000000" stroke="#FFFFFF" stroke-width="20" stroke-linejoin="miter" stroke-miterlimit="4" />
+
+  <!-- ========================================== -->
+  <!-- CÂMERA DE SEGURANÇA CFTV PROFISSIONAL      -->
+  <!-- ========================================== -->
+  <g id="camera-group">
+    <!-- Suporte de parede / flange metálica na esquerda -->
+    <rect x="180" y="260" width="34" height="62" rx="17" fill="url(#metalArm)" stroke="#0A1118" stroke-width="4" />
+    <!-- Parafusos da flange -->
+    <circle cx="197" cy="275" r="4.5" fill="#B0C7DE" stroke="#16222F" stroke-width="2" />
+    <circle cx="197" cy="307" r="4.5" fill="#B0C7DE" stroke="#16222F" stroke-width="2" />
+
+    <!-- Braço articulado metálico -->
+    <path d="M 197 291 L 236 291 C 244 291 251 285 251 277 L 251 254" fill="none" stroke="url(#metalArm)" stroke-width="18" stroke-linecap="round" stroke-linejoin="round" />
+    
+    <!-- Articulação esférica com trava -->
+    <circle cx="251" cy="254" r="13" fill="#8FAECB" stroke="#101923" stroke-width="3" />
+    <rect x="238" y="240" width="26" height="8" rx="3" fill="#364B5E" stroke="#0D141C" stroke-width="2" />
+
+    <!-- Corpo cilíndrico principal da câmera -->
+    <g transform="rotate(-6 270 230)">
+      <!-- Sombra projetada sob o teto da câmera -->
+      <path d="M 182 222 L 285 210 L 285 248 L 182 248 Z" fill="#1C2733" />
+      
+      <!-- Corpo metálico da câmera -->
+      <path d="M 180 200 L 278 190 L 278 245 L 180 245 Z" fill="url(#cameraBody)" stroke="#0E1622" stroke-width="4" />
+
+      <!-- Linhas de ranhuras técnicas no corpo -->
+      <line x1="205" y1="198" x2="205" y2="245" stroke="#708FA9" stroke-width="2" />
+      <line x1="220" y1="196" x2="220" y2="245" stroke="#708FA9" stroke-width="2" />
+      <line x1="235" y1="194" x2="235" y2="245" stroke="#708FA9" stroke-width="2" />
+
+      <!-- Viseira / Teto protetor solar (Sunshield) -->
+      <path d="M 174 195 C 174 186 280 172 320 174 L 322 198 L 174 204 Z" fill="#FFFFFF" stroke="#0D1622" stroke-width="4" />
+      <path d="M 176 193 C 210 184 280 176 316 177" stroke="#00D2FF" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.7" />
+
+      <!-- Anel frontal da câmera (Faceplate frontal chanfrada) -->
+      <ellipse cx="288" cy="224" rx="28" ry="38" fill="#16202C" stroke="#0E1620" stroke-width="5" />
+      <ellipse cx="288" cy="224" rx="24" ry="34" fill="#0C121A" />
+
+      <!-- LEDs infravermelhos circulares ao redor da lente -->
+      <circle cx="288" cy="198" r="3" fill="#4B6682" />
+      <circle cx="288" cy="250" r="3" fill="#4B6682" />
+      <circle cx="272" cy="208" r="3" fill="#4B6682" />
+      <circle cx="304" cy="208" r="3" fill="#4B6682" />
+      <circle cx="272" cy="240" r="3" fill="#4B6682" />
+      <circle cx="304" cy="240" r="3" fill="#4B6682" />
+
+      <!-- Lente de vidro de alta precisão com reflexo azul e ciano -->
+      <ellipse cx="288" cy="224" rx="18" ry="26" fill="url(#lensGrad)" stroke="#00D2FF" stroke-width="2" />
+      
+      <!-- Pupila central escura -->
+      <ellipse cx="288" cy="224" rx="9" ry="13" fill="#02060D" />
+      
+      <!-- Brilho / Reflexo óptico no vidro da lente -->
+      <path d="M 281 210 C 285 206 294 206 297 210 C 295 215 285 215 281 210 Z" fill="#FFFFFF" opacity="0.85" />
+      <ellipse cx="292" cy="232" rx="3" ry="5" fill="#00FFFF" opacity="0.9" />
+    </g>
+  </g>
+
+  <!-- ========================================== -->
+  <!-- TIPOGRAFIA DO LOGO: INTELSEC SUL           -->
+  <!-- ========================================== -->
+  <g id="logo-text">
+    <!-- Texto INTELSEC -->
+    <text
+      x="256"
+      y="384"
+      text-anchor="middle"
+      font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Arial Black', sans-serif"
+      font-size="64"
+      font-weight="900"
+      letter-spacing="-1px"
+      fill="url(#cyanBlueGrad)"
+      stroke="#020914"
+      stroke-width="4"
+      paint-order="stroke fill"
+    >
+      Intelsec
+    </text>
+
+    <!-- Texto SUL -->
+    <text
+      x="256"
+      y="424"
+      text-anchor="middle"
+      font-family="system-ui, -apple-system, 'Segoe UI', Roboto, 'Arial Black', sans-serif"
+      font-size="44"
+      font-weight="900"
+      letter-spacing="2px"
+      fill="#FFFFFF"
+      stroke="#020914"
+      stroke-width="3"
+      paint-order="stroke fill"
+    >
+      Sul
+    </text>
+  </g>
 </svg>

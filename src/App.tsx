@@ -5,6 +5,7 @@ import { Hero } from './components/Hero';
 import { PlansSection } from './components/PlansSection';
 import { HowItWorksSection } from './components/HowItWorksSection';
 import { ProblemsSolvedSection } from './components/ProblemsSolvedSection';
+import { TrustCoverageSection } from './components/TrustCoverageSection';
 import { FaqSection } from './components/FaqSection';
 import { FinalCtaSection } from './components/FinalCtaSection';
 import { Footer } from './components/Footer';
@@ -29,6 +30,9 @@ export default function App() {
 
           {/* 6. Comparativo Aluguel vs Compra ("Por Que Alugar é Melhor Que Comprar?") */}
           <ProblemsSolvedSection />
+
+          {/* 7. Seção de confiança (cidades atendidas + avaliações) */}
+          <TrustCoverageSection />
 
           {/* 11. FAQ acordeão */}
           <FaqSection />

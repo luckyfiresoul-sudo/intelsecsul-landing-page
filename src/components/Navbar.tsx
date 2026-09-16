@@ -12,19 +12,19 @@ export const Navbar: React.FC = () => {
       id="topo"
       className="sticky top-0 z-40 w-full bg-[#0A0D14]/90 backdrop-blur-md border-b border-[#1E293B] shadow-lg shadow-black/40 transition-colors"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-        {/* Logo à esquerda */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-18 flex items-center justify-center sm:justify-between">
+        {/* Logo (centralizada no mobile, à esquerda no desktop) */}
         <a
           href="#topo"
           id="nav-logo"
-          className="flex items-center group focus:outline-none focus:ring-2 focus:ring-[#0091FF] rounded-lg py-1 px-1.5 transition-transform"
+          className="flex items-center justify-center group focus:outline-none focus:ring-2 focus:ring-[#0091FF] rounded-lg py-1 px-1.5 transition-transform mx-auto sm:mx-0"
           aria-label="IntelsecSul - Início"
         >
           <Logo variant="navbar" />
         </a>
 
-        {/* Controles à direita */}
-        <div className="flex items-center gap-3 sm:gap-5">
+        {/* Controles à direita (apenas desktop/tablet) */}
+        <div className="hidden sm:flex items-center gap-3 sm:gap-5">
           {/* Telefone clicável (apenas desktop/tablet, oculto no mobile) */}
           <a
             id="nav-phone-link"

@@ -1,10 +1,6 @@
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import {
-  ChevronLeft,
-  ChevronRight,
   Star,
-  CheckCircle2,
-  Quote,
   ShieldCheck,
 } from 'lucide-react';
 import {
@@ -16,307 +12,126 @@ import { WhatsAppIcon } from './WhatsAppIcon';
 export const TrustCoverageSection: React.FC = () => {
   const { getWhatsAppUrl, trackWhatsAppClick } = useTracking();
 
-  // Estado e refs para o Carrossel de Avaliações
-  const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
-  const reviewsCarouselRef = useRef<HTMLDivElement>(null);
-  const isDraggingRef = useRef(false);
-  const startXRef = useRef(0);
-  const scrollLeftRef = useRef(0);
-
-  const whatsappUrl = getWhatsAppUrl(
-    'Olá! Vi as avaliações dos clientes da Intelsecsul e gostaria de solicitar uma avaliação técnica para o meu imóvel.'
+  // URL WhatsApp para contratação rápida após ver avaliações
+  const contratarWhatsappUrl = getWhatsAppUrl(
+    'Olá! Vi as avaliações dos clientes no site e quero CONTRATAR AGORA a locação das câmeras de segurança.'
   );
 
-  // Manipuladores de arrasto (mouse drag para desktop e touch suave)
-  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!reviewsCarouselRef.current) return;
-    isDraggingRef.current = true;
-    startXRef.current = e.pageX - reviewsCarouselRef.current.offsetLeft;
-    scrollLeftRef.current = reviewsCarouselRef.current.scrollLeft;
-  };
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!isDraggingRef.current || !reviewsCarouselRef.current) return;
-    e.preventDefault();
-    const x = e.pageX - reviewsCarouselRef.current.offsetLeft;
-    const walk = (x - startXRef.current) * 1.5;
-    reviewsCarouselRef.current.scrollLeft = scrollLeftRef.current - walk;
-  };
-
-  const handleMouseUpOrLeave = () => {
-    if (!isDraggingRef.current || !reviewsCarouselRef.current) return;
-    isDraggingRef.current = false;
-    // Snap magnético para o card mais próximo
-    const container = reviewsCarouselRef.current;
-    const cardWidth = container.firstElementChild?.clientWidth || container.clientWidth;
-    const targetIndex = Math.round(container.scrollLeft / cardWidth);
-    scrollToReview(Math.max(0, Math.min(CUSTOMER_REVIEWS.length - 1, targetIndex)));
-  };
-
-  // Navegação do Carrossel de Avaliações
-  const scrollToReview = (index: number) => {
-    if (!reviewsCarouselRef.current) return;
-    const container = reviewsCarouselRef.current;
-    const cards = container.children;
-    if (cards[index]) {
-      (cards[index] as HTMLElement).scrollIntoView({
-        behavior: 'smooth',
-        block: 'nearest',
-        inline: 'start',
-      });
-      setCurrentReviewIndex(index);
-    }
-  };
-
-  const handlePrevReview = () => {
-    const newIndex = Math.max(0, currentReviewIndex - 1);
-    scrollToReview(newIndex);
-  };
-
-  const handleNextReview = () => {
-    const newIndex = Math.min(CUSTOMER_REVIEWS.length - 1, currentReviewIndex + 1);
-    scrollToReview(newIndex);
-  };
-
-  const handleReviewsScroll = () => {
-    if (!reviewsCarouselRef.current) return;
-    const container = reviewsCarouselRef.current;
-    const scrollPosition = container.scrollLeft;
-    const cardWidth = container.firstElementChild?.clientWidth || 1;
-    const newIndex = Math.round(scrollPosition / cardWidth);
-    if (newIndex !== currentReviewIndex && newIndex >= 0 && newIndex < CUSTOMER_REVIEWS.length) {
-      setCurrentReviewIndex(newIndex);
-    }
-  };
-
   return (
-    <section id="avaliacoes" className="py-16 sm:py-24 bg-[#0A0D14] border-b border-[#1E293B]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="avaliacoes" className="relative py-16 sm:py-24 bg-[#0B0904] border-y border-[#F59E0B]/30 overflow-hidden">
+      {/* Efeito sutil de iluminação ambiente em âmbar/ouro corporativo */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[260px] bg-[#F59E0B]/10 rounded-full blur-[130px] pointer-events-none" />
+      <div className="absolute bottom-0 right-10 w-[450px] h-[220px] bg-[#F59E0B]/5 rounded-full blur-[110px] pointer-events-none" />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* ========================================================================= */}
-        {/* CARROSSEL DE AVALIAÇÕES DE CLIENTES COM 5 ESTRELAS                        */}
+        {/* AVALIAÇÕES DE CLIENTES (VERTICAL, CONTÍNUO, SEM ACORDEÃO, COR ÂMBAR)      */}
         {/* ========================================================================= */}
         <div>
-          {/* Cabeçalho do Carrossel de Avaliações */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
-            <div>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-400/10 border border-amber-400/30 text-amber-300 text-xs font-bold uppercase tracking-wider mb-3">
-                <div className="flex items-center gap-0.5">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-                  ))}
-                </div>
-                <span>5.0 • 100% de Satisfação</span>
-              </div>
-
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-                Avaliações de Nossos Clientes
-              </h2>
-              <p className="mt-2 text-sm sm:text-base text-[#CBD5E1]">
-                Deslize para conferir a experiência de quem já protegeu seu patrimônio e recomenda a Intelsecsul.
-              </p>
+          {/* Cabeçalho centralizado com destaque em Âmbar / Ouro Corporativo */}
+          <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#F59E0B]/15 border border-[#F59E0B]/50 text-[#FCD34D] text-xs font-bold uppercase tracking-wider mb-4 shadow-lg shadow-[#F59E0B]/10">
+              <span>Satisfação Comprovada</span>
             </div>
 
-            {/* Controles de Navegação do Carrossel de Avaliações */}
-            <div className="flex items-center gap-3">
-              <span className="text-xs font-semibold text-[#CBD5E1]">
-                {currentReviewIndex + 1} de {CUSTOMER_REVIEWS.length}
-              </span>
-              <button
-                id="btn-reviews-prev"
-                type="button"
-                onClick={handlePrevReview}
-                disabled={currentReviewIndex === 0}
-                className={`w-10 h-10 rounded-xl bg-[#161F30] border border-[#1E293B] flex items-center justify-center transition-all cursor-pointer ${
-                  currentReviewIndex === 0
-                    ? 'opacity-40 cursor-not-allowed text-slate-500'
-                    : 'text-white hover:bg-[#0091FF] hover:border-[#0091FF] shadow-sm'
-                }`}
-                aria-label="Avaliação anterior"
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </button>
-              <button
-                id="btn-reviews-next"
-                type="button"
-                onClick={handleNextReview}
-                disabled={currentReviewIndex === CUSTOMER_REVIEWS.length - 1}
-                className={`w-10 h-10 rounded-xl bg-[#161F30] border border-[#1E293B] flex items-center justify-center transition-all cursor-pointer ${
-                  currentReviewIndex === CUSTOMER_REVIEWS.length - 1
-                    ? 'opacity-40 cursor-not-allowed text-slate-500'
-                    : 'text-white hover:bg-[#0091FF] hover:border-[#0091FF] shadow-sm'
-                }`}
-                aria-label="Próxima avaliação"
-              >
-                <ChevronRight className="w-5 h-5" />
-              </button>
-            </div>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight text-center">
+              Avaliações de <span className="text-[#FBBF24]">Nossos Clientes</span>
+            </h2>
+            <p className="mt-3 text-sm sm:text-base text-[#FDE68A]/80 text-center max-w-2xl mx-auto">
+              Confira a experiência real de quem já protegeu seu patrimônio residencial, comercial e condominial com a Intelsecsul.
+            </p>
           </div>
 
-          {/* Trilho do Carrossel de Avaliações (Split Design 50/50 Desktop, Empilhado Mobile) */}
-          <div className="relative max-w-5xl mx-auto">
-            {/* Botão Flutuante Esquerdo (Desktop) */}
-            <button
-              id="btn-reviews-prev-floating"
-              type="button"
-              onClick={handlePrevReview}
-              disabled={currentReviewIndex === 0}
-              className={`hidden md:flex absolute -left-5 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-[#161F30] border border-[#1E293B] items-center justify-center transition-all cursor-pointer shadow-xl ${
-                currentReviewIndex === 0
-                  ? 'opacity-30 cursor-not-allowed text-slate-600'
-                  : 'text-white hover:bg-[#0091FF] hover:border-[#0091FF] hover:scale-105'
-              }`}
-              aria-label="Avaliação anterior"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
+          {/* Lista Vertical Contínua de Avaliações (um abaixo do outro, sem acordeões) */}
+          <div className="flex flex-col gap-6 sm:gap-8 max-w-4xl mx-auto">
+            {CUSTOMER_REVIEWS.map((review) => (
+              <div
+                key={review.id}
+                id={`review-card-${review.id}`}
+                className="relative rounded-2xl overflow-hidden bg-gradient-to-b from-[#3D2A0E] via-[#2E1F0A] to-[#1E1406] border-2 border-[#F59E0B]/80 hover:border-[#FBBF24] shadow-2xl shadow-[#F59E0B]/20 hover:shadow-[#F59E0B]/35 transition-all duration-300 group"
+              >
+                {/* Linha superior de destaque em âmbar dourado */}
+                <div className="absolute top-0 inset-x-6 h-[2px] rounded-t-2xl pointer-events-none bg-gradient-to-r from-transparent via-[#F59E0B] to-transparent" />
 
-            {/* Botão Flutuante Direito (Desktop) */}
-            <button
-              id="btn-reviews-next-floating"
-              type="button"
-              onClick={handleNextReview}
-              disabled={currentReviewIndex === CUSTOMER_REVIEWS.length - 1}
-              className={`hidden md:flex absolute -right-5 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-[#161F30] border border-[#1E293B] items-center justify-center transition-all cursor-pointer shadow-xl ${
-                currentReviewIndex === CUSTOMER_REVIEWS.length - 1
-                  ? 'opacity-30 cursor-not-allowed text-slate-600'
-                  : 'text-white hover:bg-[#0091FF] hover:border-[#0091FF] hover:scale-105'
-              }`}
-              aria-label="Próxima avaliação"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
+                {/* Card Split Layout: Imagem real à esquerda, Avaliação à direita no desktop */}
+                <div className="grid grid-cols-1 md:grid-cols-12">
+                  
+                  {/* Lado da Imagem: Foto real da instalação com acabamento em âmbar */}
+                  <div className="md:col-span-5 relative w-full h-[240px] sm:h-[280px] md:h-full min-h-[240px] md:min-h-[300px] bg-[#140E04] overflow-hidden flex items-center justify-center border-b md:border-b-0 md:border-r border-[#F59E0B]/40">
+                    <img
+                      src={review.imageUrl}
+                      alt={review.imageAlt || review.author}
+                      draggable={false}
+                      className="w-full h-full object-contain p-3 md:p-4 transition-transform duration-700 group-hover:scale-105 pointer-events-none select-none"
+                      referrerPolicy="no-referrer"
+                    />
 
-            <div
-              id="reviews-carousel-track"
-              ref={reviewsCarouselRef}
-              onScroll={handleReviewsScroll}
-              onMouseDown={handleMouseDown}
-              onMouseMove={handleMouseMove}
-              onMouseUp={handleMouseUpOrLeave}
-              onMouseLeave={handleMouseUpOrLeave}
-              className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-4 pt-1 scroll-smooth no-scrollbar cursor-grab active:cursor-grabbing select-none"
-              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}
-            >
-              {CUSTOMER_REVIEWS.map((review) => (
-                <div
-                  key={review.id}
-                  id={`review-slide-${review.id}`}
-                  className="snap-center shrink-0 w-full bg-[#161F30] border border-[#1E293B] hover:border-[#0091FF]/50 rounded-2xl overflow-hidden shadow-2xl shadow-black/40 transition-all duration-300 group select-none"
-                >
-                  {/* Card Split Layout: 50% Imagem à esquerda, 50% Conteúdo à direita no Desktop */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 md:min-h-[420px]">
-                    
-                    {/* Lado Esquerdo (50%): Imagem Real / Foto da Instalação com Altura Fixa Uniforme */}
-                    <div className="relative w-full h-[280px] sm:h-[320px] md:h-full min-h-[280px] sm:min-h-[320px] md:min-h-[420px] bg-[#0E131F] overflow-hidden flex items-center justify-center pointer-events-none sm:pointer-events-auto">
-                      <img
-                        src={review.imageUrl}
-                        alt={review.imageAlt || review.author}
-                        draggable={false}
-                        className="w-full h-full object-contain p-2 md:p-4 transition-transform duration-700 group-hover:scale-105 pointer-events-none select-none"
-                        referrerPolicy="no-referrer"
-                      />
-                      {/* Gradiente sutil apenas na borda para o desktop, sem sobrepor a imagem no mobile */}
-                      <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-transparent to-[#161F30]/60 pointer-events-none" />
-                    </div>
+                    {/* Gradiente sutil para transição elegante no desktop */}
+                    <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-transparent to-[#2E1F0A]/40 pointer-events-none" />
+                  </div>
 
-                    {/* Lado Direito (50%): Avaliação, 5 Estrelas Douradas e Dados do Cliente */}
-                    <div className="p-6 sm:p-8 md:p-10 flex flex-col justify-between relative bg-[#161F30] min-h-[260px] md:min-h-[420px]">
-                      {/* Ícone de Aspas decorativo de fundo */}
-                      <div className="absolute top-6 right-6 text-[#1E293B] group-hover:text-[#0091FF]/20 transition-colors pointer-events-none">
-                        <Quote className="w-12 h-12 rotate-180" />
-                      </div>
-
-                      <div>
-                        {/* 5 Estrelas Douradas SVG + Badge 5.0 */}
-                        <div className="flex items-center gap-2 mb-4">
-                          <div className="flex items-center gap-1">
-                            {[...Array(review.rating)].map((_, i) => (
-                              <Star
-                                key={i}
-                                className="w-5 h-5 fill-amber-400 text-amber-400 drop-shadow-xs"
-                              />
-                            ))}
-                          </div>
-                          <span className="text-xs font-extrabold text-amber-400 bg-amber-400/10 px-2 py-0.5 rounded-md border border-amber-400/20">
-                            5.0
-                          </span>
-                          <span className="text-xs text-slate-400 font-medium hidden sm:inline-block">
-                            • {review.date}
-                          </span>
+                  {/* Lado do Conteúdo: 5 Estrelas Âmbar, Depoimento e Autor */}
+                  <div className="md:col-span-7 p-6 sm:p-8 flex flex-col justify-between relative">
+                    <div>
+                      {/* 5 Estrelas Douradas SVG + Badge 5.0 */}
+                      <div className="flex items-center gap-2 mb-4">
+                        <div className="flex items-center gap-1">
+                          {[...Array(review.rating)].map((_, i) => (
+                            <Star
+                              key={i}
+                              className="w-5 h-5 fill-[#F59E0B] text-[#F59E0B] drop-shadow-xs"
+                            />
+                          ))}
                         </div>
-
-                        {/* Texto da Avaliação */}
-                        <blockquote className="text-sm sm:text-base md:text-lg text-slate-200 leading-relaxed font-normal mb-6 relative z-10">
-                          "{review.comment}"
-                        </blockquote>
-                      </div>
-
-                      {/* Autor e Credenciais */}
-                      <div className="pt-5 border-t border-[#1E293B] flex items-center justify-between">
-                        <div>
-                          <h4 className="text-base sm:text-lg font-bold text-white group-hover:text-[#00C5FF] transition-colors">
-                            {review.author}
-                          </h4>
-                          <p className="text-xs sm:text-sm text-[#0091FF] font-medium">
-                            {review.role}
-                          </p>
-                        </div>
-                        <span className="text-xs font-semibold text-slate-300 bg-[#121824] px-3 py-1.5 rounded-lg border border-[#1E293B]">
-                          {review.location}
+                        <span className="text-xs font-extrabold text-[#FCD34D] bg-[#F59E0B]/25 px-2 py-0.5 rounded-md border border-[#F59E0B]/60">
+                          5.0
                         </span>
                       </div>
 
+                      {/* Texto da Avaliação com alta legibilidade */}
+                      <blockquote className="text-base sm:text-lg text-amber-50 leading-relaxed font-normal mb-6 relative z-10">
+                        "{review.comment}"
+                      </blockquote>
                     </div>
+
+                    {/* Autor e Credenciais com detalhes em âmbar */}
+                    <div className="pt-5 border-t border-[#F59E0B]/40 flex flex-wrap items-center justify-between gap-3">
+                      <div>
+                        <h4 className="text-base sm:text-lg font-bold text-white group-hover:text-[#FCD34D] transition-colors">
+                          {review.author}
+                        </h4>
+                        <p className="text-xs sm:text-sm text-[#FBBF24] font-semibold">
+                          Segmento: {review.role}
+                        </p>
+                      </div>
+                      <span className="text-xs font-semibold text-[#FDE68A] bg-[#1E1406] px-3 py-1.5 rounded-lg border border-[#F59E0B]/50 shadow-xs">
+                        {review.location}
+                      </span>
+                    </div>
+
                   </div>
                 </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Dots Indicadores do Carrossel de Avaliações */}
-          <div className="flex items-center justify-center gap-2 mt-6 mb-10">
-            {CUSTOMER_REVIEWS.map((review, idx) => (
-              <button
-                key={`dot-review-${review.id}`}
-                type="button"
-                onClick={() => scrollToReview(idx)}
-                className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
-                  idx === currentReviewIndex
-                    ? 'w-8 bg-amber-400'
-                    : 'w-2.5 bg-[#1E293B] hover:bg-slate-600'
-                }`}
-                aria-label={`Ir para avaliação de ${review.author}`}
-              />
+              </div>
             ))}
           </div>
 
-          {/* Chamada para Avaliação Técnica via WhatsApp */}
-          <div className="p-6 sm:p-8 rounded-2xl bg-[#161F30] border border-[#1E293B] flex flex-col sm:flex-row items-center justify-between gap-6 text-left max-w-5xl mx-auto shadow-xl shadow-black/30">
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 rounded-xl bg-[#0091FF]/10 border border-[#0091FF]/30 flex items-center justify-center shrink-0 text-[#0091FF]">
-                <ShieldCheck className="w-6 h-6" />
-              </div>
-              <div>
-                <h4 className="text-base sm:text-lg font-bold text-white">
-                  Pronto para proteger seu patrimônio com suporte total?
-                </h4>
-                <p className="text-xs sm:text-sm text-[#CBD5E1] mt-1">
-                  Agende sua visita sem compromisso em Curitiba e Região Metropolitana.
-                </p>
-              </div>
+          {/* Botão WhatsApp Contratar Agora pós-avaliações */}
+          <div className="mt-12 sm:mt-16 flex flex-col items-center justify-center text-center">
+            <div className="inline-flex items-center gap-2 text-xs font-semibold text-[#FDE68A] mb-3">
+              <ShieldCheck className="w-4 h-4 text-[#F59E0B]" />
+              <span>Junte-se a centenas de clientes satisfeitos em Curitiba e RMC</span>
             </div>
-
             <a
-              id="btn-whatsapp-avaliacoes-secao"
-              href={whatsappUrl}
+              id="btn-whatsapp-avaliacoes-contratar-agora"
+              href={contratarWhatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => trackWhatsAppClick('avaliacoes-carrossel-cta')}
-              className="inline-flex items-center justify-center gap-2.5 bg-[#25D366] hover:bg-[#1EBE5D] text-white font-bold text-sm py-3.5 px-7 rounded-xl shadow-lg shadow-[#25D366]/25 transition-all hover:scale-102 shrink-0 w-full sm:w-auto"
+              onClick={() => trackWhatsAppClick('avaliacoes-contratar-agora')}
+              className="inline-flex items-center justify-center gap-3 px-8 sm:px-10 py-4 rounded-xl font-extrabold text-white bg-[#25D366] hover:bg-[#1EBE5D] active:scale-[0.98] shadow-lg shadow-[#25D366]/25 hover:shadow-xl hover:shadow-[#25D366]/35 transition-all text-base sm:text-lg cursor-pointer tracking-wide"
             >
-              <WhatsAppIcon className="w-4 h-4 fill-white" />
-              <span>Falar no WhatsApp</span>
+              <WhatsAppIcon className="w-5 h-5 fill-white" />
+              <span>CONTRATAR AGORA</span>
             </a>
           </div>
 
@@ -326,3 +141,4 @@ export const TrustCoverageSection: React.FC = () => {
     </section>
   );
 };
+

@@ -1,10 +1,8 @@
 import React from 'react';
-import { MessageSquareText, ClipboardCheck, Wrench, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { HOW_IT_WORKS_STEPS } from '../data/constants';
 
 export const HowItWorksSection: React.FC = () => {
-  const stepIcons = [MessageSquareText, ClipboardCheck, Wrench];
-
   return (
     <section id="como-funciona" className="py-16 sm:py-24 bg-[#121824] border-b border-[#1E293B]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -25,20 +23,16 @@ export const HowItWorksSection: React.FC = () => {
         {/* 3 Passos Numerados */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
           {HOW_IT_WORKS_STEPS.map((item, index) => {
-            const Icon = stepIcons[index] || MessageSquareText;
             return (
               <div
                 key={item.step}
                 id={`step-${item.step}`}
                 className="relative bg-[#161F30] border border-[#1E293B] rounded-2xl p-7 flex flex-col items-start text-left hover:border-[#0091FF]/50 shadow-xl shadow-black/30 transition-all group"
               >
-                {/* Número do Passo & Ícone */}
-                <div className="flex items-center justify-between w-full mb-6">
+                {/* Número do Passo */}
+                <div className="mb-6 w-full flex justify-center md:justify-start">
                   <div className="w-14 h-14 rounded-2xl bg-[#0A0D14] border border-[#1E293B] text-[#0091FF] flex items-center justify-center font-black text-2xl shadow-md group-hover:scale-105 group-hover:text-[#00C5FF] transition-all">
                     {item.step}
-                  </div>
-                  <div className="w-10 h-10 rounded-xl bg-[#121824] border border-[#1E293B] flex items-center justify-center text-[#CBD5E1] shadow-xs">
-                    <Icon className="w-5 h-5 text-[#0091FF]" />
                   </div>
                 </div>
 

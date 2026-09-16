@@ -65,6 +65,8 @@ export const TrustCoverageSection: React.FC = () => {
                       draggable={false}
                       className="w-full h-full object-contain p-3 md:p-4 transition-transform duration-700 group-hover:scale-105 pointer-events-none select-none"
                       referrerPolicy="no-referrer"
+                      loading="lazy"
+                      decoding="async"
                     />
 
                     {/* Gradiente sutil para transição elegante no desktop */}

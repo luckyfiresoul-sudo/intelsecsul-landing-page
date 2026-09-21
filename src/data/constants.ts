@@ -9,11 +9,11 @@ import {
   ReviewItem,
   ReviewGalleryImage,
 } from '../types';
-import rev1Img from '../assets/images/review-1.webp';
-import rev2Img from '../assets/images/review-2.webp';
-import rev3Img from '../assets/images/review-3.webp';
-import rev4Img from '../assets/images/review-4.webp';
-import rev5Img from '../assets/images/review-5.webp';
+import rev1Img from '../assets/images/regenerated_image_1789429191139.png';
+import rev2Img from '../assets/images/regenerated_image_1789429308718.png';
+import rev3Img from '../assets/images/regenerated_image_1789429565454.png';
+import rev4Img from '../assets/images/regenerated_image_1789429648135.png';
+import rev5Img from '../assets/images/regenerated_image_1789429728170.png';
 
 export const COMPANY_INFO = {
   name: 'Intelsecsul — Segurança Eletrônica',
@@ -56,7 +56,7 @@ export const PLANS_DATA: PlanItem[] = [
     name: 'Plano Essencial',
     camerasCount: 2,
     specs: '2 câmeras IP 1080p, NVR 4 canais, HD 500GB',
-    image: '/plano-1.webp',
+    image: '/1.png',
     items: [
       '2 Câmeras IP Full HD 1080p',
       'Gravador NVR 4 Canais IP',
@@ -76,7 +76,7 @@ export const PLANS_DATA: PlanItem[] = [
     name: 'Plano Compacto',
     camerasCount: 3,
     specs: '3 câmeras IP 1080p, NVR 4 canais, HD 500GB',
-    image: '/plano-2.webp',
+    image: '/2.png',
     items: [
       '3 Câmeras IP Full HD 1080p',
       'Gravador NVR 4 Canais IP',
@@ -96,7 +96,7 @@ export const PLANS_DATA: PlanItem[] = [
     name: 'Plano Proteção',
     camerasCount: 4,
     specs: '4 câmeras IP 1080p, NVR 4 canais, HD 500GB',
-    image: '/plano-3.webp',
+    image: '/3.png',
     items: [
       '4 Câmeras IP Full HD 1080p',
       'Gravador NVR 4 Canais IP',
@@ -118,7 +118,7 @@ export const PLANS_DATA: PlanItem[] = [
     name: 'Plano Completo',
     camerasCount: 6,
     specs: '6 câmeras IP 1080p, NVR 8 canais, HD 1TB',
-    image: '/plano-4.webp',
+    image: '/4.png',
     items: [
       '6 Câmeras IP Full HD 1080p',
       'Gravador NVR 8 Canais IP',
@@ -138,7 +138,7 @@ export const PLANS_DATA: PlanItem[] = [
     name: 'Plano Empresarial',
     camerasCount: 8,
     specs: '8 câmeras IP 1080p, NVR 8 canais, HD 1TB',
-    image: '/plano-5.webp',
+    image: '/5.png',
     items: [
       '8 Câmeras IP Full HD 1080p',
       'Gravador NVR 8 Canais IP',
@@ -158,7 +158,7 @@ export const PLANS_DATA: PlanItem[] = [
     name: 'Plano Condomínio/Corporativo',
     camerasCount: 16,
     specs: '16 câmeras IP 1080p, NVR 16 canais, HD 2TB',
-    image: '/plano-6.webp',
+    image: '/6.png',
     items: [
       '16 Câmeras IP Full HD 1080p',
       'Gravador NVR 16 Canais IP',

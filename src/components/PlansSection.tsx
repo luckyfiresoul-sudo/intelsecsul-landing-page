@@ -172,10 +172,6 @@ export const PlansSection: React.FC = () => {
                         alt={`Equipamentos inclusos no ${plan.name}`}
                         className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
                         referrerPolicy="no-referrer"
-                        loading="lazy"
-                        decoding="async"
-                        width={400}
-                        height={400}
                       />
                     </div>
                   ) : (
